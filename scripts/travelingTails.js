@@ -80,15 +80,16 @@ dogImage.addEventListener('click', function(e) {
         dogQuote(); 
 });
 
-function dogQuote() {
-    const dogInfo = 'https://my-little-cors-proxy.herokuapp.com/https://dog-api.kinduff.com/api/facts?number=1';
-    const dogText = document.querySelector('.dog-blurb-style');
-    get(dogInfo)
-    .then(function(response) {
-        dogText.innerHTML = response.facts;   
-    });
+async function dogQuote() {
+    try{
+        const dogInfo = 'https://my-little-cors-proxy.herokuapp.com/https://dog-api.kinduff.com/api/facts?number=1';
+        const dogText = document.querySelector('.dog-blurb-style');
+        const response = await get(dogInfo);
+        dogText.innerHTML = response.facts;
+    } catch(error){
+        return error;
+    }
 }
-
 
 //Click functions for the locations buttons
 parksButton.addEventListener('click', function(e) {
@@ -117,23 +118,21 @@ restaurantButton.addEventListener('click', function(e) {
 });
 
 //Function to grab and return the data
-function get(url) {
-    return fetch(url)
-        .then(function(response) {
-            return response.json()
-        })
-        .then(function(data) {
-            if (data.status === "ZERO_RESULTS"){
-                alert('Enter a valid location.');
-                secondPage.style.display = 'none';
-                firstPage.style.display = 'block';
-            } else {
-                return data;
-            } 
-        })
-        .catch(function(error) {
-            return error;
-        });
+async function get(url) {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.status === "ZERO_RESULTS"){
+            alert('Enter a valid location.');
+            secondPage.style.display = 'none';
+            firstPage.style.display = 'block';
+        } else {
+            return data;
+        } 
+    } catch (error) {
+        return error;
+    }
 };
 
 function setHotelLocations() {
