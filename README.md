@@ -1,4 +1,4 @@
-# Traveling-Tails
+# ASYNC/AWAIT REFACTORING: Traveling-Tails
 ##Description
 Traveling Tails was created to optimize travel and other activities with dogs. Within the application, one can filter areas through five different categories: hotels, parks, restaurants, health services for pets, and pet stores. When inputing the location, the user is taken to a map populated with the categories' locations. There is also a feature where if you click on a dog image, random dog facts will appear.
 
