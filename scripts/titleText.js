@@ -19,10 +19,18 @@ function circularText(txt, radius, classIndex) {
   });
 }
 
+circularText("                  Traveling Tails", 400, 0);
+// let screenHeight = window.visualViewport.height;
+
 //Making it fit larger screen size
-if (screenWidth >= 1000) {
-    circularText("                  Traveling Tails", 400, 0);
-} else if (screenWidth < 1000) {
-    circularText("                 Traveling Tails", 230, 0);
-};
+// Safari browser does not support visualViewport
+// function changeCirText() {
+//     let screenWidth = window.visualViewport.width;
+
+//     if (screenWidth >= 1000) {
+//         circularText("                  Traveling Tails", 400, 0);
+//     } else if (screenWidth < 1000) {
+//         circularText("                 Traveling Tails", 230, 0);
+//     };
+// }
 
